@@ -17,6 +17,7 @@
 		62B86FC124045F0D0068597D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62B86FBF24045F0D0068597D /* LaunchScreen.storyboard */; };
 		62B86FCC24045F0D0068597D /* Assign4sprasherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B86FCB24045F0D0068597D /* Assign4sprasherTests.swift */; };
 		62B86FD724045F0D0068597D /* Assign4sprasherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B86FD624045F0D0068597D /* Assign4sprasherUITests.swift */; };
+		62F7BC9F2406729400046EF3 /* AddScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F7BC9E2406729400046EF3 /* AddScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		62B86FD224045F0D0068597D /* Assign4sprasherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assign4sprasherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62B86FD624045F0D0068597D /* Assign4sprasherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assign4sprasherUITests.swift; sourceTree = "<group>"; };
 		62B86FD824045F0D0068597D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62F7BC9E2406729400046EF3 /* AddScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			children = (
 				628FA22624062C4300DFCA09 /* PlaceTableViewController.swift */,
 				62B86FB824045F0A0068597D /* ViewController.swift */,
+				62F7BC9E2406729400046EF3 /* AddScreenViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				62B86FB724045F0A0068597D /* AppDelegate.swift in Sources */,
 				628FA22B2406310900DFCA09 /* PlaceDescription.swift in Sources */,
 				628FA22724062C4300DFCA09 /* PlaceTableViewController.swift in Sources */,
+				62F7BC9F2406729400046EF3 /* AddScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
