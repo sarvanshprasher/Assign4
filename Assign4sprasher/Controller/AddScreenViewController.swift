@@ -15,10 +15,10 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
     switch identifier {
     case "save":
-        print("save bar button item tapped")
+        print("save bar")
         
     case "cancel":
-        print("cancel bar button item tapped")
+        print("cancel bar")
         
     default:
         print("unexpected segue identifier")
