@@ -17,6 +17,7 @@ class PlaceTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
 
 //        let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(PlaceTableViewController.addPlace))
         
@@ -86,6 +87,20 @@ class PlaceTableViewController: UITableViewController {
         
     }
     
+    
+    @objc func onDidReceiveData(_ notification:Notification) {
+        
+        guard let dic = notification.object as? PlaceDescription else {
+            return
+            }
+        let newPlace:PlaceDescription = PlaceDescription(name: dic.name, description: dic.description,
+                                        category: dic.category, address_title: dic.address_title,
+                                        address_street: dic.address_street , elevation: dic.elevation,
+                                        latitude: dic.latitude, longitude: dic.longitude)
+        self.placesList[dic.name] = newPlace
+        self.names = Array(self.placesList.keys).sorted()
+        self.tableView.reloadData()
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

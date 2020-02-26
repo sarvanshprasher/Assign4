@@ -186,7 +186,7 @@
         <!--Add Screen View Controller-->
         <scene sceneID="kzw-2K-mfp">
             <objects>
-                <viewController id="b6c-YQ-h5P" customClass="AddScreenViewController" sceneMemberID="viewController">
+                <viewController id="b6c-YQ-h5P" customClass="AddScreenViewController" customModule="Assign4sprasher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hc4-32-i5I">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -262,6 +262,16 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="answerAddressStreet" destination="AbJ-bf-n1S" id="C4m-4c-eF7"/>
+                        <outlet property="answerAddressTitle" destination="HP2-6e-nft" id="PBC-dh-vvO"/>
+                        <outlet property="answerCategory" destination="kMk-HB-gDi" id="nYO-kn-FnA"/>
+                        <outlet property="answerDescription" destination="10Z-G1-B17" id="Mjf-UE-qEW"/>
+                        <outlet property="answerElevation" destination="aco-M0-UBa" id="y5s-nn-4WO"/>
+                        <outlet property="answerLatitude" destination="dLX-GK-01P" id="NOQ-DG-zH6"/>
+                        <outlet property="answerLongitude" destination="49a-xn-ybe" id="rg7-Ck-eXK"/>
+                        <outlet property="answerName" destination="Rk7-1P-pZI" id="DiG-TC-fun"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpA-mC-4v2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="0ba-GW-zht" userLabel="Exit" sceneMemberID="exit"/>
