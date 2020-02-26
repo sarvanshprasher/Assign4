@@ -1,0 +1,178 @@
+{
+  "Notre-Dame-Paris": {
+    "elevation": 115,
+    "image": "notredame3rdstatuewest",
+    "latitude": 48.852972,
+    "name": "Notre-Dame-Paris",
+    "address-title": "Cathedral Notre Dame de Paris",
+    "description": "The 13th century cathedral with gargoyles, one of the first flying buttress, and home of the purported crown of thorns.",
+    "address-street": "6 Parvis Notre-Dame Pl Jean-Paul-II$75004 Paris France",
+    "category": "Travel",
+    "longitude": 2.34991
+  },
+  "Toreros": {
+    "elevation": 200,
+    "image": "univsandiego",
+    "latitude": 32.771923,
+    "name": "Toreros",
+    "address-title": "University of San Diego",
+    "description": "The University of San Diego, a private Catholic undergraduate university.",
+    "address-street": "5998 Alcala Park$San Diego CA 92110",
+    "category": "School",
+    "longitude": -117.188204
+  },
+  "Rogers-Trailhead": {
+    "elevation": 4500,
+    "image": "rogerstrough",
+    "latitude": 33.422212,
+    "name": "Rogers-Trailhead",
+    "address-title": "",
+    "description": "Trailhead for hiking to Rogers Canyon Ruins and Reavis Ranch",
+    "address-street": "",
+    "category": "Hike",
+    "longitude": -111.173393
+  },
+  "New-York-NY": {
+    "elevation": 2,
+    "image": "newyork",
+    "latitude": 40.712991,
+    "name": "New-York-NY",
+    "address-title": "New York City Hall",
+    "description": "New York City Hall at West end of Brooklyn Bridge",
+    "address-street": "1 Elk St$New York NY 10007",
+    "category": "Travel",
+    "longitude": -74.005948
+  },
+  "UAK-Anchorage": {
+    "elevation": 0,
+    "image": "univalaska",
+    "latitude": 61.189748,
+    "name": "UAK-Anchorage",
+    "address-title": "University of Alaska at Anchorage",
+    "description": "University of Alaska's largest campus",
+    "address-street": "290 Spirit Dr$Anchorage AK 99508",
+    "category": "School",
+    "longitude": -149.826721
+  },
+  "Calgary-Alberta": {
+    "elevation": 3556,
+    "image": "calgaryalberta",
+    "latitude": 51.131377,
+    "name": "Calgary-Alberta",
+    "address-title": "Calgary International Airport",
+    "description": "The home of the Calgary Stampede Celebration",
+    "address-street": "2000 Airport Rd NE$Calgary AB T2E 6Z8 Canada",
+    "category": "Travel",
+    "longitude": -114.011246
+  },
+  "Barrow-Alaska": {
+    "elevation": 5,
+    "image": "barrowalaska",
+    "latitude": 71.287881,
+    "name": "Barrow-Alaska",
+    "address-title": "Will Rogers Airport",
+    "description": "The only real way in and out of Barrow Alaska.",
+    "address-street": "1725 Ahkovak St$Barrow AK 99723",
+    "category": "Travel",
+    "longitude": -156.779417
+  },
+  "Reavis-Ranch": {
+    "elevation": 5000,
+    "image": "reavisranch",
+    "latitude": 33.491154,
+    "name": "Reavis-Ranch",
+    "address-title": "",
+    "description": "Historic Ranch in Superstition Mountains famous for Apple orchards",
+    "address-street": "",
+    "category": "Hike",
+    "longitude": -111.155385
+  },
+  "ASU-Brickyard": {
+    "elevation": 1300,
+    "image": "brickyard",
+    "latitude": 33.423883,
+    "name": "ASU-Brickyard",
+    "address-title": "ASU CIDSE",
+    "description": "Home of ASU's CS, CE, and IE programs",
+    "address-street": "699 S Mill Ave,\nTempe, AZ 85281",
+    "category": "School",
+    "longitude": -111.939548
+  },
+  "Muir-Woods": {
+    "elevation": 350,
+    "image": "muirwoods",
+    "latitude": 37.8912,
+    "name": "Muir-Woods",
+    "address-title": "Muir Woods National Monument",
+    "description": "Redwood forest North of San Francisco, surrounded by Mount Tamalpais State Park.",
+    "address-street": "1 Muir Woods Rd$Mill Valley CA 94941",
+    "category": "Hike",
+    "longitude": -122.5957
+  },
+  "Windcave-Peak": {
+    "elevation": 3130,
+    "image": "windcavepeak",
+    "latitude": 33.476069,
+    "name": "Windcave-Peak",
+    "address-title": "Usery Mountain Recreation Area",
+    "description": "Beyond the Wind Cave is a half mile trail with 250' additional elevation to the peak overlooking Usery and the Valley.",
+    "address-street": "3939 N Usery Pass Rd$Mesa AZ 85207",
+    "category": "Hike",
+    "longitude": -111.595709
+  },
+  "Circlestone": {
+    "elevation": 6000,
+    "image": "circlestone",
+    "latitude": 33.477524,
+    "name": "Circlestone",
+    "address-title": "",
+    "description": "Indian Ruins located on the second highest peak in the Superstition Wilderness of the Tonto National Forest. Leave Fireline at Turney Spring (33.487610,-111.132400)",
+    "address-street": "",
+    "category": "Hike",
+    "longitude": -111.134345
+  },
+  "Moscow-Russia": {
+    "elevation": 512,
+    "image": "moscow",
+    "latitude": 55.758087,
+    "name": "Moscow-Russia",
+    "address-title": "Courtyard Moscow City Center",
+    "description": "The Marriott Courtyard in downtown Moscow",
+    "address-street": "Voznesenskiy per 7 $ Moskva Russia 125009",
+    "category": "Travel",
+    "longitude": 37.604042
+  },
+  "ASU-West": {
+    "elevation": 1100,
+    "image": "asuwest",
+    "latitude": 33.608979,
+    "name": "ASU-West",
+    "address-title": "ASU West Campus",
+    "description": "Home of ASU's Applied Computing Program",
+    "address-street": "13591 N 47th Ave$Phoenix AZ 85051",
+    "category": "School",
+    "longitude": -112.159469
+  },
+  "Reavis-Grave": {
+    "elevation": 3900,
+    "image": "reavisgrave",
+    "latitude": 33.441499,
+    "name": "Reavis-Grave",
+    "address-title": "",
+    "description": "Grave site of Reavis Ranch Proprietor.",
+    "address-street": "",
+    "category": "Hike",
+    "longitude": -111.182511
+  },
+  "London-England": {
+    "elevation": 82,
+    "image": "londonunderground",
+    "latitude": 51.481959,
+    "name": "London-England",
+    "address-title": "Renaissance London Heathrow Airport",
+    "description": "Renaissance Hotel at the Heathrow Airport",
+    "address-street": "5 Mondial Way$Harlington Hayes UB3 UK",
+    "category": "Travel",
+    "longitude": -0.445286
+  }
+}
