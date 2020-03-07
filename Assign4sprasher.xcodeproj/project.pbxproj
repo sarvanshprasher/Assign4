@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		622F275724139269008E881F /* PlaceLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622F275624139269008E881F /* PlaceLibrary.swift */; };
 		628FA22724062C4300DFCA09 /* PlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FA22624062C4300DFCA09 /* PlaceTableViewController.swift */; };
 		628FA22924062FC700DFCA09 /* places.json in Resources */ = {isa = PBXBuildFile; fileRef = 628FA22824062FC700DFCA09 /* places.json */; };
 		628FA22B2406310900DFCA09 /* PlaceDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FA22A2406310900DFCA09 /* PlaceDescription.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		622F275624139269008E881F /* PlaceLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLibrary.swift; sourceTree = "<group>"; };
 		628FA22624062C4300DFCA09 /* PlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewController.swift; sourceTree = "<group>"; };
 		628FA22824062FC700DFCA09 /* places.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = places.json; sourceTree = "<group>"; };
 		628FA22A2406310900DFCA09 /* PlaceDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDescription.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				628FA22A2406310900DFCA09 /* PlaceDescription.swift */,
+				622F275624139269008E881F /* PlaceLibrary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				62B86FB924045F0A0068597D /* ViewController.swift in Sources */,
 				62B86FB724045F0A0068597D /* AppDelegate.swift in Sources */,
 				628FA22B2406310900DFCA09 /* PlaceDescription.swift in Sources */,
+				622F275724139269008E881F /* PlaceLibrary.swift in Sources */,
 				628FA22724062C4300DFCA09 /* PlaceTableViewController.swift in Sources */,
 				62F7BC9F2406729400046EF3 /* AddScreenViewController.swift in Sources */,
 			);
