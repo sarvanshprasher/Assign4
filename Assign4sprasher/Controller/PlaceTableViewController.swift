@@ -80,6 +80,7 @@ class PlaceTableViewController: UITableViewController {
             let indexPath = self.tableView.indexPathForSelectedRow!
             viewController.place = self.placesList
             viewController.selectedPlace = self.names[indexPath.row]
+            viewController.placesNames = names
         }
     }
     
