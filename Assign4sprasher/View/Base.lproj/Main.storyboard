@@ -164,6 +164,36 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="dummy distance" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Olz-Hf-67D">
+                                <rect key="frame" x="7" y="547" width="291" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(in km)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0j-aB-sTa">
+                                <rect key="frame" x="307" y="557" width="54" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(in °)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxN-5Y-r5y">
+                                <rect key="frame" x="307" y="586" width="38" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="dummy bearing" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3M4-6L-OaQ">
+                                <rect key="frame" x="7" y="586" width="291" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Place" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DyY-fA-smK">
                                 <rect key="frame" x="7" y="509" width="352" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -182,8 +212,10 @@
                     <connections>
                         <outlet property="dummyAddressStreet" destination="dWR-N2-dbh" id="ffN-PC-DqD"/>
                         <outlet property="dummyAddressTitle" destination="9ZV-Mn-N9G" id="259-PG-cNY"/>
+                        <outlet property="dummyBearing" destination="3M4-6L-OaQ" id="pjp-Um-2Ha"/>
                         <outlet property="dummyCategory" destination="47m-CT-Yqi" id="L27-bY-AyW"/>
                         <outlet property="dummyDescription" destination="EUb-gw-uet" id="8Ob-t5-GPk"/>
+                        <outlet property="dummyDistance" destination="Olz-Hf-67D" id="ZyF-AG-EwA"/>
                         <outlet property="dummyElevation" destination="gMc-In-7wN" id="eem-HI-7BR"/>
                         <outlet property="dummyLatitude" destination="16Z-GK-fQs" id="jFt-Jf-deT"/>
                         <outlet property="dummyLongitude" destination="ZPe-zQ-anE" id="b08-wN-uOg"/>
