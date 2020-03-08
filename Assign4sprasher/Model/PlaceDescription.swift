@@ -7,8 +7,8 @@
 //
 
 // Rights to use this code given to Arizona State University
-//  & Professor Timothy Lindquist (Tim.Lindquist@asu.edu) for course SER 423
-//@author Sarvansh Prasher mailto:sprasher@asu.edu
+// & Professor Timothy Lindquist (Tim.Lindquist@asu.edu) for course SER 423
+// @author Sarvansh Prasher mailto:sprasher@asu.edu
 // @version 20 January,2020
 
 import Foundation
@@ -23,6 +23,8 @@ public class PlaceDescription{
     public var elevation: Float = 0.0
     public var latitude: Float = 0.0
     public var longitude: Float = 0.0
+    public var distance:Double = 0.0
+    public var bearing:Double = 0.0
     
     public init(name: String,description: String ,category: String,address_title: String,
                 address_street: String,elevation :Float,latitude : Float, longitude: Float){
@@ -79,7 +81,7 @@ public class PlaceDescription{
         var jsonStr = "";
         let dict:[String : Any] = ["name": name,"description" :description ,"category": category,
                                    "address_title" : address_title, "address_street" :address_street,
-            "elevation" : elevation, "latitude" : latitude, "longitude" : longitude] as [String : Any]
+                                   "elevation" : elevation, "latitude" : latitude, "longitude" : longitude] as [String : Any]
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions.prettyPrinted)
             // here "jsonData" is the dictionary encoded in JSON data

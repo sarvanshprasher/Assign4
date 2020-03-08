@@ -2,14 +2,18 @@
 //  PlaceTableViewController.swift
 //  Assign4sprasher
 //
-//  Created by sarvansh prasher on 2/25/20.
+//  Created by sarvansh prasher on 3/7/20.
 //  Copyright © 2020 Sarvansh prasher. All rights reserved.
-//
+//  Rights to use this code given to Arizona State University
+//  & Professor Timothy Lindquist (Tim.Lindquist@asu.edu) for course SER 423
+//  @author Sarvansh Prasher mailto:sprasher@asu.edu
+//  @version 7 March,2020
 
 import UIKit
 
 class PlaceTableViewController: UITableViewController {
 
+    let controller = PlaceLibrary()
     var placesList:[String:PlaceDescription] = [String:PlaceDescription]()
     var names:[String] = [String]()
     
@@ -18,23 +22,8 @@ class PlaceTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
-
-//        let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(PlaceTableViewController.addPlace))
         
-        if let path = Bundle.main.path(forResource: "places", ofType: "json"){
-            do {
-                let jsonStr:String = try String(contentsOfFile:path)
-                let data:Data = jsonStr.data(using: String.Encoding.utf8)!
-                let dict:[String:Any] = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String:Any]
-                for places:String in dict.keys {
-                    let place:PlaceDescription = PlaceDescription(dict: dict[places] as! [String:Any])
-                    self.placesList[places] = place
-                }
-            } catch {
-                print("List not loading")
-            }
-        }
-        
+        placesList =  controller.getData()
         self.names = Array(placesList.keys).sorted()
         self.title = "Places"
         

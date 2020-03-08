@@ -2,23 +2,26 @@
 //  ViewController.swift
 //  Assign4sprasher
 //
-//  Created by sarvansh prasher on 2/24/20.
+//  Created by sarvansh prasher on 3/7/20.
 //  Copyright © 2020 Sarvansh prasher. All rights reserved.
-//
+//  Rights to use this code given to Arizona State University
+//  & Professor Timothy Lindquist (Tim.Lindquist@asu.edu) for course SER 423
+//  @author Sarvansh Prasher mailto:sprasher@asu.edu
+//  @version 7 March,2020
 
 import UIKit
 import Foundation
 import Darwin
 
 class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
-                        UINavigationControllerDelegate,UIPickerViewDataSource {
+UINavigationControllerDelegate,UIPickerViewDataSource {
     
     var place:[String:PlaceDescription] = [String:PlaceDescription]()
     var selectedPlace:String = "unknown"
     
     var placesNames:[String] = [String]()
     let zero = 0.0
-
+    
     @IBOutlet weak var dummyName: UITextView!
     @IBOutlet weak var dummyDescription: UITextView!
     @IBOutlet weak var dummyCategory: UITextView!
@@ -44,25 +47,20 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         dummyElevation.text = "\(place[selectedPlace]!.elevation)"
         dummyLatitude.text = "\(place[selectedPlace]!.latitude)"
         dummyLongitude.text = "\(place[selectedPlace]!.longitude)"
-        dummyDistance.text = String(zero)
-        dummyBearing.text = String(zero)
-
+        dummyDistance.text = "\(place[selectedPlace]!.distance)"
+        dummyBearing.text = "\(place[selectedPlace]!.bearing)"
+        
         
         self.title = place[selectedPlace]?.name
-        
-        
         placePicker.delegate = self
         placePicker.dataSource = self
         placePicker.removeFromSuperview()
         selectPlace.inputView = placePicker
-
         selectedPlace =  (placesNames.count > 0) ? placesNames[0] : "unknown unknown"
         let place:[String] = selectedPlace.components(separatedBy: " ")
         selectPlace.text = place[0]
-
-       
     }
- 
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.selectPlace.resignFirstResponder()
     }
@@ -71,7 +69,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         self.selectPlace.resignFirstResponder()
         return true
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let thisPlace = placesNames[row]
         let tokens:[String] = thisPlace.components(separatedBy: " ")
@@ -95,7 +93,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         let tokens:[String] = p.components(separatedBy: " ")
         return tokens[0]
     }
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -105,58 +103,53 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     }
     
     func getDistance(latitude:Double, longitude :Double) -> Double {
-    
         
-        print(latitude,longitude)
+        var lat1 = 0.0
+        var lat2 = 0.0
+        var lon1 = 0.0
+        var lon2 = 0.0
         
-    var lat1 = 0.0
-    var lat2 = 0.0
-    var lon1 = 0.0
-    var lon2 = 0.0
-    
-    lat1 = Double(place[selectedPlace]!.latitude)
-    lon1 = Double(place[selectedPlace]!.longitude)
+        lat1 = Double(place[selectedPlace]!.latitude)
+        lon1 = Double(place[selectedPlace]!.longitude)
         
-     print(lat1,lon1)
-    
-    lat2 = latitude
-    lon2 = longitude
-    
-    if ((lat1 == lat2) && (lon1 == lon2)) {
-    return zero
-    } else {
-    let theta = lon1 - lon2
-    var dist = sin(deg2rad(lat1)) * sin(deg2rad(lat2))
-        + cos(deg2rad(lat1)) * cos(deg2rad(lat2))
-        * cos(deg2rad(theta))
-    dist = acos(dist)
-    dist = radiansToDegrees(radians: dist)
-    dist = dist * 60 * 1.1515 * 1.609344
-    return (dist)
-    }
+        lat2 = latitude
+        lon2 = longitude
+        
+        if ((lat1 == lat2) && (lon1 == lon2)) {
+            return zero
+        } else {
+            let theta = lon1 - lon2
+            var dist = sin(deg2rad(lat1)) * sin(deg2rad(lat2))
+                + cos(deg2rad(lat1)) * cos(deg2rad(lat2))
+                * cos(deg2rad(theta))
+            dist = acos(dist)
+            dist = radiansToDegrees(radians: dist)
+            dist = dist * 60 * 1.1515 * 1.609344
+            return (dist)
+        }
     }
     
     func getBearing(latitude:Double, longitude :Double) -> Double {
-    
-    var lat1 = 0.0
-    var lat2 = 0.0
-    var lon1 = 0.0
-    var lon2 = 0.0
-    
-    lat1 = Double(place[selectedPlace]!.latitude)
-    lat1 = deg2rad(lat1)
-    
-    lon1 = Double(place[selectedPlace]!.longitude)
-
-    lat2 = latitude
-    lat2 = deg2rad(lat2)
-    
-    lon2 = longitude
-    
+        
+        var lat1 = 0.0
+        var lat2 = 0.0
+        var lon1 = 0.0
+        var lon2 = 0.0
+        
+        lat1 = Double(place[selectedPlace]!.latitude)
+        lat1 = deg2rad(lat1)
+        
+        lon1 = Double(place[selectedPlace]!.longitude)
+        
+        lat2 = latitude
+        lat2 = deg2rad(lat2)
+        
+        lon2 = longitude
+        
         let longDiff = deg2rad(lon2 - lon1)
         let y = sin(longDiff) * cos(lat2)
         let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(longDiff)
-    
+        
         return (radiansToDegrees(radians: atan2(y, x)) + 360).truncatingRemainder(dividingBy:360)
     }
     
@@ -167,6 +160,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     func radiansToDegrees (radians: Double)->Double {
         return radians * 180 / .pi
     }
-
+    
 }
 
