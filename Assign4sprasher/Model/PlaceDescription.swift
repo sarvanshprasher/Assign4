@@ -1,6 +1,6 @@
 //
 //  PlaceDescription.swift
-//  PlaceInfo
+//  Assign4sprasher
 //
 //  Created by sarvansh prasher on 1/22/20.
 //  Copyright © 2020 Sarvansh prasher. All rights reserved.
@@ -90,6 +90,13 @@ public class PlaceDescription{
             print("unable to convert dictionary to a Json Object with error: \(error)")
         }
         return jsonStr
+    }
+    
+    func toDict() -> [String:Any] {
+        let dict:[String:Any] = ["name": name,"description" :description ,"category": category,
+                                 "address_title" : address_title, "address_street" :address_street,
+                                 "elevation" : elevation, "latitude" : latitude, "longitude" : longitude] as [String : Any]
+        return dict
     }
     
 }

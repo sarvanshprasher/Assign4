@@ -16,6 +16,7 @@ class PlaceTableViewController: UITableViewController {
     let controller = PlaceLibrary()
     var placesList:[String:PlaceDescription] = [String:PlaceDescription]()
     var names:[String] = [String]()
+    var urlString:String = "http://127.0.0.1:8080"
     
     @IBOutlet weak var placeTableListView: UITableView!
     
@@ -23,10 +24,82 @@ class PlaceTableViewController: UITableViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
         
-        placesList =  controller.getData()
-        self.names = Array(placesList.keys).sorted()
+        self.getPlacesData()
         self.title = "Places"
-        
+        self.urlString = self.setURL()
+  
+    }
+    
+    func getPlacesData() {
+        let aConnect:PlaceCollectionAsyncTask = PlaceCollectionAsyncTask(urlString: urlString)
+        let _:Bool = aConnect.getNames(callback: { (res: String, err: String?) -> Void in
+            if err != nil {
+                NSLog(err!)
+            }else{
+                NSLog(res)
+                if let data: Data = res.data(using: String.Encoding.utf8){
+                    do{
+                        let dict = try JSONSerialization.jsonObject(with: data,options:.mutableContainers) as?[String:AnyObject]
+                        self.names = (dict!["result"] as? [String])!
+                        self.names = Array(self.names).sorted()
+                        if self.names.count > 0 {
+                            self.populateList(names: self.names)
+                        }
+                    } catch {
+                        print("unable to convert to dictionary")
+                    }
+                }
+                
+            }
+        })  // end of method call to getNames
+    }
+    
+    func populateList( names:[String]){
+        self.names = names
+        for name in names{
+            getDetails(name)
+        }
+        tableView.reloadData()
+    }
+    
+    
+    func getDetails(_ name: String){
+        let aConnect:PlaceCollectionAsyncTask = PlaceCollectionAsyncTask(urlString: urlString)
+        let _:Bool = aConnect.get(name: name, callback: { (res: String, err: String?) -> Void in
+            if err != nil {
+                NSLog(err!)
+            }else{
+                NSLog(res)
+                if let data: Data = res.data(using: String.Encoding.utf8){
+                    do{
+                        let dict = try JSONSerialization.jsonObject(with: data,options:.mutableContainers) as?[String:AnyObject]
+                        let aDict:[String:AnyObject] = (dict!["result"] as? [String:AnyObject])!
+                        let place:PlaceDescription = PlaceDescription(dict: aDict)
+                        self.placesList[name] = place
+                    } catch {
+                        NSLog("unable to convert to dictionary")
+                    }
+                }
+            }
+        })
+    }
+
+    
+    func setURL () -> String {
+        var serverhost:String = "localhost"
+        var jsonrpcport:String = "8080"
+        var serverprotocol:String = "http"
+        // access and log all of the app settings from the settings bundle resource
+        if let path = Bundle.main.path(forResource: "ServerInfo", ofType: "plist"){
+            // defaults
+            if let dict = NSDictionary(contentsOfFile: path) as? [String:AnyObject] {
+                serverhost = (dict["server_host"] as? String)!
+                jsonrpcport = (dict["jsonrpc_port"] as? String)!
+                serverprotocol = (dict["server_protocol"] as? String)!
+            }
+        }
+//        print("setURL returning: \(serverprotocol)://\(serverhost):\(jsonrpcport)")
+        return "\(serverprotocol)://\(serverhost):\(jsonrpcport)"
     }
 
     // MARK: - Table view data source
@@ -44,19 +117,24 @@ class PlaceTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         print("tableView editing row at: \(indexPath.row)")
         if editingStyle == .delete {
+            let aConnect:PlaceCollectionAsyncTask = PlaceCollectionAsyncTask(urlString: urlString)
+            let _:Bool = aConnect.remove(placeName: names[indexPath.row],callback: { _,_  in
+            })
             let selectedPlace:String = names[indexPath.row]
             placesList.removeValue(forKey: selectedPlace)
             names = Array(placesList.keys)
             tableView.deleteRows(at: [indexPath], with: .fade)
+
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Get and configure the cell...
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceList", for: indexPath)
-        let places = placesList[names[indexPath.row]]! as PlaceDescription
-        cell.textLabel?.text = places.name
-        cell.detailTextLabel?.text = "\(places.category)"
+        let places =  names[indexPath.row] as String
+//        let places = placesList[names[indexPath.row]]! as PlaceDescription
+        cell.textLabel?.text = places
+//        cell.detailTextLabel?.text = "\(places)"
         return cell
     }
     
@@ -65,8 +143,8 @@ class PlaceTableViewController: UITableViewController {
         // Pass the selected object (and model) to the new view controller.
         //NSLog("seque identifier is \(String(describing: segue.identifier))")
         if segue.identifier == "PlaceDetail" {
-            let viewController:ViewController = segue.destination as! ViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
+            let viewController:ViewController = segue.destination as! ViewController
             viewController.place = self.placesList
             viewController.selectedPlace = self.names[indexPath.row]
             viewController.placesNames = names
@@ -88,53 +166,11 @@ class PlaceTableViewController: UITableViewController {
                                         address_street: dic.address_street , elevation: dic.elevation,
                                         latitude: dic.latitude, longitude: dic.longitude)
         self.placesList[dic.name] = newPlace
+        let aConnect:PlaceCollectionAsyncTask = PlaceCollectionAsyncTask(urlString: urlString)
+        let _:Bool = aConnect.add(place: newPlace,callback: { _,_  in
+            print("\(newPlace.name) added as: \(newPlace.toJsonString())")})
         self.names = Array(self.placesList.keys).sorted()
         self.tableView.reloadData()
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
 }

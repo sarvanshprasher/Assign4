@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6211AAF9241F3F5400F43F26 /* PlaceCollectionAsyncTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6211AAF7241F3F5300F43F26 /* PlaceCollectionAsyncTask.swift */; };
+		6211AAFA241F3F5400F43F26 /* ServerInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6211AAF8241F3F5400F43F26 /* ServerInfo.plist */; };
 		622F275724139269008E881F /* PlaceLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622F275624139269008E881F /* PlaceLibrary.swift */; };
 		628FA22724062C4300DFCA09 /* PlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FA22624062C4300DFCA09 /* PlaceTableViewController.swift */; };
 		628FA22924062FC700DFCA09 /* places.json in Resources */ = {isa = PBXBuildFile; fileRef = 628FA22824062FC700DFCA09 /* places.json */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6211AAF7241F3F5300F43F26 /* PlaceCollectionAsyncTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCollectionAsyncTask.swift; sourceTree = "<group>"; };
+		6211AAF8241F3F5400F43F26 /* ServerInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServerInfo.plist; sourceTree = "<group>"; };
 		622F275624139269008E881F /* PlaceLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLibrary.swift; sourceTree = "<group>"; };
 		628FA22624062C4300DFCA09 /* PlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewController.swift; sourceTree = "<group>"; };
 		628FA22824062FC700DFCA09 /* places.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = places.json; sourceTree = "<group>"; };
@@ -84,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6211AAFB241F3F6100F43F26 /* AsyncTask */ = {
+			isa = PBXGroup;
+			children = (
+				6211AAF7241F3F5300F43F26 /* PlaceCollectionAsyncTask.swift */,
+			);
+			path = AsyncTask;
+			sourceTree = "<group>";
+		};
 		628FA231240631CF00DFCA09 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +147,7 @@
 		62B86FB524045F0A0068597D /* Assign4sprasher */ = {
 			isa = PBXGroup;
 			children = (
+				6211AAFB241F3F6100F43F26 /* AsyncTask */,
 				628FA2342406321800DFCA09 /* Model */,
 				628FA2332406320600DFCA09 /* Controller */,
 				628FA231240631CF00DFCA09 /* View */,
@@ -142,6 +155,7 @@
 				62B86FB624045F0A0068597D /* AppDelegate.swift */,
 				62B86FBD24045F0D0068597D /* Assets.xcassets */,
 				62B86FC224045F0D0068597D /* Info.plist */,
+				6211AAF8241F3F5400F43F26 /* ServerInfo.plist */,
 			);
 			path = Assign4sprasher;
 			sourceTree = "<group>";
@@ -268,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6211AAFA241F3F5400F43F26 /* ServerInfo.plist in Resources */,
 				62B86FC124045F0D0068597D /* LaunchScreen.storyboard in Resources */,
 				62B86FBE24045F0D0068597D /* Assets.xcassets in Resources */,
 				62B86FBC24045F0A0068597D /* Main.storyboard in Resources */,
@@ -297,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62B86FB924045F0A0068597D /* ViewController.swift in Sources */,
+				6211AAF9241F3F5400F43F26 /* PlaceCollectionAsyncTask.swift in Sources */,
 				62B86FB724045F0A0068597D /* AppDelegate.swift in Sources */,
 				628FA22B2406310900DFCA09 /* PlaceDescription.swift in Sources */,
 				622F275724139269008E881F /* PlaceLibrary.swift in Sources */,
