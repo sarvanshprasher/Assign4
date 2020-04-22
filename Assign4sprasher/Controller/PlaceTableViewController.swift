@@ -18,6 +18,7 @@ class PlaceTableViewController: UITableViewController {
     var names:[String] = [String]()
     var urlString:String = "http://127.0.0.1:8080"
     let placecoredata = PlaceCoreData();
+    var isRefeshing = false
     
     @IBOutlet weak var placeTableListView: UITableView!
     
@@ -45,12 +46,22 @@ class PlaceTableViewController: UITableViewController {
         
         
         
+        let swipeToRefresh = UIRefreshControl()
+        swipeToRefresh.addTarget(self, action: #selector(syncwithserver), for: .valueChanged)
+        self.refreshControl = swipeToRefresh
+        swipeToRefresh.attributedTitle = NSAttributedString(string: "Sync in progress...")
         
         
         self.title = "Places"
         self.urlString = self.setURL()
         loadDatafromDB()
   
+    }
+    
+    @objc private func syncwithserver()  {
+        isRefeshing = true;
+        placecoredata.deleteAllPlaces()
+        getPlacesData()
     }
     
     func loadDatafromDB(){
@@ -98,6 +109,7 @@ class PlaceTableViewController: UITableViewController {
         for name in names{
             getDetails(name)
         }
+        self.refreshControl?.endRefreshing()
         tableView.reloadData()
     }
     
@@ -115,6 +127,7 @@ class PlaceTableViewController: UITableViewController {
                         let aDict:[String:AnyObject] = (dict!["result"] as? [String:AnyObject])!
                         let place:PlaceDescription = PlaceDescription(dict: aDict)
                         self.placesList[name] = place
+                        self.placecoredata.addPlace(place: place)
                     } catch {
                         NSLog("unable to convert to dictionary")
                     }
@@ -156,15 +169,23 @@ class PlaceTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         print("tableView editing row at: \(indexPath.row)")
         if editingStyle == .delete {
+            
+            print("1 "+indexPath.row.description)
+            
             let aConnect:PlaceCollectionAsyncTask = PlaceCollectionAsyncTask(urlString: urlString)
-            let _:Bool = aConnect.remove(placeName: names[indexPath.row],callback: { _,_  in
+            let isdeleted = aConnect.remove(placeName: names[indexPath.row],callback: { _,_  in
             })
+            
+            print("2 "+indexPath.row.description)
+            print("is deleted "+isdeleted.description)
+            
+            
             let selectedPlace:String = names[indexPath.row]
+            
+            placecoredata.deletePlace(placeName: selectedPlace)
             placesList.removeValue(forKey: selectedPlace)
             names = Array(placesList.keys)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            placecoredata.deletePlace(placeName: selectedPlace)
-
         }
     }
     
