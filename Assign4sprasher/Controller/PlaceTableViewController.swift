@@ -17,6 +17,7 @@ class PlaceTableViewController: UITableViewController {
     var placesList:[String:PlaceDescription] = [String:PlaceDescription]()
     var names:[String] = [String]()
     var urlString:String = "http://127.0.0.1:8080"
+    let placecoredata = PlaceCoreData();
     
     @IBOutlet weak var placeTableListView: UITableView!
     
@@ -24,7 +25,21 @@ class PlaceTableViewController: UITableViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
         
-        self.getPlacesData()
+        
+        let place = PlaceDescription()
+        place.name = "dsds"
+        place.description = "desc"
+        place.category = "cat"
+        place.address_street = "as"
+        place.address_title = "at"
+        place.elevation = 22
+        place.latitude = 44
+        place.longitude = 66
+        
+        placecoredata.addPlace(place: place)
+        placecoredata.getPlaces(viewController: self)
+        
+//        self.getPlacesData()
         self.title = "Places"
         self.urlString = self.setURL()
   

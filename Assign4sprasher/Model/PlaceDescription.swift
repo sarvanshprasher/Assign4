@@ -26,6 +26,10 @@ public class PlaceDescription{
     public var distance:Double = 0.0
     public var bearing:Double = 0.0
     
+    public init(){
+        
+    }
+    
     public init(name: String,description: String ,category: String,address_title: String,
                 address_street: String,elevation :Float,latitude : Float, longitude: Float){
         self.name = name

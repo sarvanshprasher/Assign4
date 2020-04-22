@@ -16,6 +16,15 @@ public class PlaceLibrary{
     
     var placesList:[String:PlaceDescription] = [String:PlaceDescription]()
     var names:[String] = [String]()
+    private static var allfetchedplaces = Array<PlaceDescription>()
+    
+    public static func setPlaces(allplaces: Array<PlaceDescription>){
+        allfetchedplaces = allplaces
+    }
+    
+    public static func getAllPlaces() -> Array<PlaceDescription>{
+        return allfetchedplaces
+    }
     
     func getData() -> [String:PlaceDescription]{
         
@@ -49,6 +58,9 @@ public class PlaceLibrary{
         }
         return jsonStr
     }
+    
+    
+    
     
     
 }

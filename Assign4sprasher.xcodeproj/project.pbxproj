@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14470B7D2450E5B0005200B3 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14470B7B2450E5B0005200B3 /* Database.xcdatamodeld */; };
+		14470B7F2450E7FA005200B3 /* PlaceCoredata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14470B7E2450E7FA005200B3 /* PlaceCoredata.swift */; };
 		6211AAF9241F3F5400F43F26 /* PlaceCollectionAsyncTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6211AAF7241F3F5300F43F26 /* PlaceCollectionAsyncTask.swift */; };
 		6211AAFA241F3F5400F43F26 /* ServerInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6211AAF8241F3F5400F43F26 /* ServerInfo.plist */; };
 		622F275724139269008E881F /* PlaceLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622F275624139269008E881F /* PlaceLibrary.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14470B7C2450E5B0005200B3 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
+		14470B7E2450E7FA005200B3 /* PlaceCoredata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCoredata.swift; sourceTree = "<group>"; };
 		6211AAF7241F3F5300F43F26 /* PlaceCollectionAsyncTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCollectionAsyncTask.swift; sourceTree = "<group>"; };
 		6211AAF8241F3F5400F43F26 /* ServerInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServerInfo.plist; sourceTree = "<group>"; };
 		622F275624139269008E881F /* PlaceLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLibrary.swift; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14470B7A2450E590005200B3 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				14470B7B2450E5B0005200B3 /* Database.xcdatamodeld */,
+				14470B7E2450E7FA005200B3 /* PlaceCoredata.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
 		6211AAFB241F3F6100F43F26 /* AsyncTask */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +160,7 @@
 		62B86FB524045F0A0068597D /* Assign4sprasher */ = {
 			isa = PBXGroup;
 			children = (
+				14470B7A2450E590005200B3 /* DB */,
 				6211AAFB241F3F6100F43F26 /* AsyncTask */,
 				628FA2342406321800DFCA09 /* Model */,
 				628FA2332406320600DFCA09 /* Controller */,
@@ -313,10 +327,12 @@
 			files = (
 				62B86FB924045F0A0068597D /* ViewController.swift in Sources */,
 				6211AAF9241F3F5400F43F26 /* PlaceCollectionAsyncTask.swift in Sources */,
+				14470B7D2450E5B0005200B3 /* Database.xcdatamodeld in Sources */,
 				62B86FB724045F0A0068597D /* AppDelegate.swift in Sources */,
 				628FA22B2406310900DFCA09 /* PlaceDescription.swift in Sources */,
 				622F275724139269008E881F /* PlaceLibrary.swift in Sources */,
 				628FA22724062C4300DFCA09 /* PlaceTableViewController.swift in Sources */,
+				14470B7F2450E7FA005200B3 /* PlaceCoredata.swift in Sources */,
 				62F7BC9F2406729400046EF3 /* AddScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,6 +656,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		14470B7B2450E5B0005200B3 /* Database.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				14470B7C2450E5B0005200B3 /* Database.xcdatamodel */,
+			);
+			currentVersion = 14470B7C2450E5B0005200B3 /* Database.xcdatamodel */;
+			path = Database.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 62B86FAB24045F0A0068597D /* Project object */;
 }
