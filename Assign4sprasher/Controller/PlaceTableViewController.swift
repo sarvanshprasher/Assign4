@@ -205,6 +205,7 @@ class PlaceTableViewController: UITableViewController {
                                         address_street: dic.address_street , elevation: dic.elevation,
                                         latitude: dic.latitude, longitude: dic.longitude)
         self.placesList[dic.name] = newPlace
+        placecoredata.addPlace(place: newPlace)
         let aConnect:PlaceCollectionAsyncTask = PlaceCollectionAsyncTask(urlString: urlString)
         let _:Bool = aConnect.add(place: newPlace,callback: { _,_  in
             print("\(newPlace.name) added as: \(newPlace.toJsonString())")})
