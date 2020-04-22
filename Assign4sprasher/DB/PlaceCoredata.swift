@@ -21,10 +21,10 @@ class PlaceCoreData{
         context = appDeledate!.persistentContainer.viewContext
     }
     
-    func getPlaces(viewController: UITableViewController){
+    func getPlaces()-> Array<PlaceDescription>{
         
         let fetchPlacesRequest:NSFetchRequest<PlaceTable> = PlaceTable.fetchRequest()
-        var places = Array<PlaceDescription>()
+        var places:Array<PlaceDescription> = Array<PlaceDescription>()
         
         do{
             let results = try context!.fetch(fetchPlacesRequest)
@@ -42,13 +42,11 @@ class PlaceCoreData{
                 places.append(place)
             }
             
-            PlaceLibrary.setPlaces(allplaces: places)
-            viewController.tableView.reloadData()
-            NSLog("Places loaded \(results.count)")
-            
         }catch let error as NSError{
             NSLog("Error fetching places \(error)")
         }
+        
+        return places
     }
     
     func addPlace(place: PlaceDescription){
@@ -99,41 +97,41 @@ class PlaceCoreData{
         
     }
     
-//    func deletePlace(placeName:String) -> Bool {
-//        
-//        var ret:Bool = false
-//        let selectRequest:NSFetchRequest<Place> = Place.fetchRequest()
-//        selectRequest.predicate = NSPredicate(format:"name == %@",placeName)
-//        
-//        do{
-//            let results = try context!.fetch(selectRequest)
-//            if results.count > 0 {
-//                context!.delete(results[0] as NSManagedObject)
-//                ret = true
-//                saveContext()
-//            }
-//        } catch let error as NSError{
-//            NSLog("error deleting student \(placeName). Error \(error)")
-//        }
-//        return ret
-//    }
-//    
-//    func deleteAllPlaces(){
-//        
-//        let fetchRequest: NSFetchRequest<Place>  = Place.fetchRequest()
-//        
-//        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
-//        
-//        do {
-//            try context!.execute(batchDeleteRequest)
-//            
-//        } catch {
-//            // Error Handling
-//        }
-//        
-//        saveContext()
-//        
-//    }
+    func deletePlace(placeName:String) -> Bool {
+        
+        var ret:Bool = false
+        let selectRequest:NSFetchRequest<PlaceTable> = PlaceTable.fetchRequest()
+        selectRequest.predicate = NSPredicate(format:"name == %@",placeName)
+        
+        do{
+            let results = try context!.fetch(selectRequest)
+            if results.count > 0 {
+                context!.delete(results[0] as NSManagedObject)
+                ret = true
+                saveContext()
+            }
+        } catch let error as NSError{
+            NSLog("error deleting student \(placeName). Error \(error)")
+        }
+        return ret
+    }
+    
+    func deleteAllPlaces(){
+        
+        let fetchRequest: NSFetchRequest<PlaceTable>  = PlaceTable.fetchRequest()
+        
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+        
+        do {
+            try context!.execute(batchDeleteRequest)
+            
+        } catch {
+            // Error Handling
+        }
+        
+        saveContext()
+        
+    }
     
     func saveContext() -> Bool {
         var ret:Bool = false
