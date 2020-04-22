@@ -163,6 +163,7 @@ class PlaceTableViewController: UITableViewController {
             placesList.removeValue(forKey: selectedPlace)
             names = Array(placesList.keys)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            placecoredata.deletePlace(placeName: selectedPlace)
 
         }
     }
