@@ -20,30 +20,15 @@ class PlaceTableViewController: UITableViewController {
     let placecoredata = PlaceCoreData();
     var isRefeshing = false
     
+    public var placeupdated:PlaceDescription = PlaceDescription()
+    var selectedPlace:PlaceDescription = PlaceDescription()
+    var indexSelected:Int = 0
+    
     @IBOutlet weak var placeTableListView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
-        
-        
-//        let place = PlaceDescription()
-//        place.name = "dsds new"
-//        place.description = "desc"
-//        place.category = "cat"
-//        place.address_street = "as"
-//        place.address_title = "at"
-//        place.elevation = 22
-//        place.latitude = 44
-//        place.longitude = 66
-////
-//        placecoredata.addPlace(place: place)
-//        placecoredata.getPlaces(viewController: self)
-        
-//        self.getPlacesData()
-        
-        
-        
         
         
         let swipeToRefresh = UIRefreshControl()
@@ -208,12 +193,46 @@ class PlaceTableViewController: UITableViewController {
             let viewController:ViewController = segue.destination as! ViewController
             viewController.place = self.placesList
             viewController.selectedPlace = self.names[indexPath.row]
+            selectedPlace = self.placesList[self.names[indexPath.row]]!
+            indexSelected = indexPath.row
             viewController.placesNames = names
         }
     }
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
+        if(segue.identifier=="updateSegueIdentifier"){
+            print("this is modify place "+placeupdated.name)
+            modifyPlace()
+        }
+    }
+    
+    
+    private func modifyPlace(){
+        print("updating")
         
+        var name: String = selectedPlace.name
+        
+        // Modify logic on server : First remove the old place then add the updated one
+        let aConnect:PlaceCollectionAsyncTask = PlaceCollectionAsyncTask(urlString: urlString)
+        let isdeleted = aConnect.remove(placeName: name,callback: { _,_  in
+        })
+        
+        aConnect.add(place: placeupdated, callback: { _,_  in
+            })
+        
+        
+        if let value = placesList.removeValue(forKey: name) {
+            print("The value \(value) was removed.")
+            placesList[name] = placeupdated
+            names[indexSelected] = placeupdated.name
+            names.sort()
+        }
+//        PlaceLibrary.allremotePlaces[placeselectedIndex] = modifiedPlace
+//        PlaceLibrary.updatePlaceOnServer(oldName: name!, modifiedObject: placeupdated)
+        
+        // Modify logic on Coredata
+        placecoredata.updatePlace(oldName: name, place: placeupdated)
+        self.tableView.reloadData()
     }
     
     

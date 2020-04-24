@@ -161,5 +161,34 @@ UINavigationControllerDelegate,UIPickerViewDataSource {
         return radians * 180 / .pi
     }
     
+    
+    private func getPlace() -> PlaceDescription{
+        let place: PlaceDescription = PlaceDescription()
+        
+        place.name = dummyName.text
+        place.description = dummyDescription.text
+        place.category = dummyCategory.text
+        place.address_title = dummyAddressTitle.text
+        place.address_street = dummyAddressStreet.text
+        place.elevation = (dummyElevation.text as NSString).floatValue
+        place.latitude = (dummyLatitude.text as NSString).floatValue
+        place.longitude = (dummyLongitude.text as NSString).floatValue
+    
+        return place
+    }
+    
+    func modifyPlace(){
+        performSegue(withIdentifier: "updateSegueIdentifier", sender: getPlace())
+        print("Running1")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier=="updateSegueIdentifier"){
+            print("Running2")
+            let placeDetailVC = segue.destination as! PlaceTableViewController
+            placeDetailVC.placeupdated = getPlace()
+        }
+    }
+    
 }
 

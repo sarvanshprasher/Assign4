@@ -68,7 +68,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n3I-6t-Gxc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-540" y="104"/>
+            <point key="canvasLocation" x="-438" y="118"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zyu-xa-eUA">
@@ -86,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="-1459" y="104"/>
         </scene>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Assign4sprasher" customModuleProvider="target" sceneMemberID="viewController">
@@ -203,6 +203,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="Pb1-JS-Yf6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="4DO-Ot-vtB">
+                            <connections>
+                                <segue destination="Mgv-dp-t8F" kind="unwind" identifier="updateSegueIdentifier" unwindAction="unwindWithSegue:" id="yx3-Jr-FBz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dummyAddressStreet" destination="dWR-N2-dbh" id="ffN-PC-DqD"/>
                         <outlet property="dummyAddressTitle" destination="9ZV-Mn-N9G" id="259-PG-cNY"/>
@@ -219,6 +226,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="Mgv-dp-t8F" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1001" y="193"/>
         </scene>
