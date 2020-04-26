@@ -143,4 +143,43 @@ class PlaceCoreData{
         }
         return ret
     }
+    
+//app_launched
+    //InitialData
+    func ifAppLaunchedFirstTime()->Bool{
+        
+        let fetchPlacesRequest:NSFetchRequest<InitialData> = InitialData.fetchRequest()
+        var isAppEmpty = false
+        
+        do{
+            let results = try context!.fetch(fetchPlacesRequest)
+            for result in results{
+                isAppEmpty = ((result as AnyObject).value(forKey:"app_launched") as? Bool)!
+            }
+        }catch let error as NSError{
+            NSLog("Error fetching places \(error)")
+        }
+        return isAppEmpty
+    }
+    
+    func appLoaded(){
+        let entity = NSEntityDescription.entity(forEntityName: "InitialData", in: context!)
+        let table = NSManagedObject(entity: entity!, insertInto: context)
+        table.setValue(true, forKey: "app_launched")
+        saveContext()
+    }
+    
+    func getSomePlace() ->PlaceDescription{
+        let place: PlaceDescription = PlaceDescription()
+        place.name = "ASU-Poly"
+        place.description = "Home of ASUs Software Engineering Programs"
+        place.category = "School"
+        place.address_title = "ASU Software Engineering"
+        place.address_street = "7171 E Sonoran Arroyo Mall$Peralta Hall 230$Mesa AZ 85212"
+        place.elevation = 1300
+        place.latitude = 33.306388
+        place.longitude = -111.679121
+        return place
+    }
+    
 }

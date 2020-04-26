@@ -36,7 +36,6 @@ class PlaceTableViewController: UITableViewController {
         self.refreshControl = swipeToRefresh
         swipeToRefresh.attributedTitle = NSAttributedString(string: "Sync in progress...")
         
-        
         self.title = "Places"
         self.urlString = self.setURL()
         loadDatafromDB()
@@ -50,8 +49,13 @@ class PlaceTableViewController: UITableViewController {
     }
     
     func loadDatafromDB(){
-        let allplaces: Array<PlaceDescription> = placecoredata.getPlaces()
         
+        if !placecoredata.ifAppLaunchedFirstTime(){
+            placecoredata.appLoaded()
+            placecoredata.addPlace(place: placecoredata.getSomePlace())
+        }
+        
+        let allplaces: Array<PlaceDescription> = placecoredata.getPlaces()
         var index = 0;
         for place in allplaces{
             
